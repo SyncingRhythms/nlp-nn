@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neural_network import MLPRegressor
+from sklearn.metrics import roc_auc_score
 
 def sample_by_year(df, yr_range):
 	return df[(df["year"]>=yr_range[0]) & (df["year"]<=yr_range[1])]
@@ -79,7 +80,9 @@ if __name__ == "__main__":
 	## Mean Squared Error ##
 
 	mse = np.mean((y_test - predictions)**2)
+	auc = roc_auc_score(y_test, predictions)
 	print("Mean Squared Error: {0}".format(mse))
+	print("Area under the curve: {0}".format(auc))
 	print("--Training Time--  {0} secs".format(round(train_time - start_time, 2)), '\n')
 	
 	print("Neural Network model specs", '\n', "Number of layers: {0}".format(mlp.n_layers_), '\n', "Size of Coefficient arrays: {0}".format([coef.shape for coef in mlp.coefs_]), '\n', "Size of Intercept arrays: {0}".format([intercept.shape for intercept in mlp.intercepts_]), '\n')
