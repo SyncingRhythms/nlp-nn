@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPRegressor
 
 def sample_by_year(df, yr_range):
