@@ -1,8 +1,6 @@
-import os
-import re
+import re, time
 import pandas as pd
 import numpy as np
-import time
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
