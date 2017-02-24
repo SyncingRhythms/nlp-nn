@@ -28,9 +28,9 @@ if __name__ == "__main__":
 	## Optional year filtering ##
 	rowo = submissions.shape[0]
 	if subsample:
-		year_range = (2010, 2015)
+		year_range = (2011, 2015)
 		submissions = sample_by_year(submissions, year_range)
-	print("Percentage of data selected: {0}%".format((submissions.shape[0]/rowo)*100))
+	print("Percentage of data selected: {0}%".format(round(submissions.shape[0]/rowo*100, 2)))
 	#print(submissions["year"].unique())
 
 	## Text Cleaning and Preprocessing ##
@@ -70,7 +70,7 @@ if __name__ == "__main__":
 	## Multi-layer Perceptron (supervised) ##
 
 	start_time = time.time()
-	mlp = MLPRegressor(solver='sgd', hidden_layer_sizes=(100,), activation='tanh', alpha=1e-5, learning_rate_init=1e-3, learning_rate='constant', random_state=1)
+	mlp = MLPRegressor(solver='sgd', hidden_layer_sizes=(100,), activation='tanh', alpha=1e-5, learning_rate_init=1e-3, learning_rate='constant', random_state=5)
 
 	mlp.fit(X_train, y_train)
 	train_time = time.time()
@@ -80,10 +80,10 @@ if __name__ == "__main__":
 	## Mean Squared Error ##
 
 	mse = np.mean((y_test - predictions)**2)
-	print(mse)
-	print("--Training Time--  {0}".format(train_time - start_time))
+	print("Mean Squared Error: {0}".format(mse))
+	print("--Training Time--  {0} secs".format(round(train_time - start_time, 2)), '\n')
 	
-	print(mlp.n_layers_, '\n', [coef.shape for coef in mlp.coefs_], '\n', [intercept.shape for intercept in mlp.intercepts_], '\n')
+	print("Neural Network model specs", '\n', "Number of layers: {0}".format(mlp.n_layers_), '\n', "Size of Coefficient arrays: {0}".format([coef.shape for coef in mlp.coefs_]), '\n', "Size of Intercept arrays: {0}".format([intercept.shape for intercept in mlp.intercepts_]), '\n')
 
 	
 	
