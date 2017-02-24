@@ -24,8 +24,7 @@ if __name__ == "__main__":
 	submissions = submissions.drop(drop_cols, axis=1).dropna()
 	dates = submissions["submission_time"].str.split('-').tolist()
 	submissions.drop(["submission_time"], axis=1, inplace=True)
-	years = list(map(lambda x: int(x[0]), dates))
-	submissions["year"] = years
+	submissions["year"] = list(map(lambda x: int(x[0]), dates))
 	print(submissions.head())
 
 	## Optional year filtering ##
