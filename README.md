@@ -1,4 +1,4 @@
-# hn-NaturalLanguageProcessing
+# Predicting Hacker News Upvotes
 
 Natural Language Processing of Hacker News article headlines
 
