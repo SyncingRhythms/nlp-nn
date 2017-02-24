@@ -8,6 +8,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPRegressor
 
+def sample_by_year(df, yr_range):
+	return df[(df["year"]>=yr_range[0]) & (df["year"]<=yr_range[1])]
+
 if __name__ == "__main__":
 	## load data ##
 	subsample = False
@@ -28,7 +31,8 @@ if __name__ == "__main__":
 	## Optional year filtering ##
 	rowo = submissions.shape[0]
 	if subsample:
-		submissions = submissions[submissions['year']>=2012]
+		year_range = (2010, 2015)
+		submissions = sample_by_year(submissions, year_range)
 	print("Percentage of data selected: {0}%".format((submissions.shape[0]/rowo)*100))
 	#print(submissions["year"].unique())
 
