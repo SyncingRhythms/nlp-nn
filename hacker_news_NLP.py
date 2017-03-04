@@ -52,7 +52,7 @@ if __name__ == "__main__":
 	vectorizer = CountVectorizer(analyzer = "word", tokenizer = None, preprocessor = None, stop_words = "english", max_features = 5000)
 	counts = vectorizer.fit_transform([tokens[0] for tokens in clean_tokenized])
 	
-	## Normalize target 0-1 ##
+	## Scale target 0-1 ##
 
 	submissions["upvotes_norm"] = (submissions["upvotes"] - submissions["upvotes"].min()) / (submissions["upvotes"].max() - submissions["upvotes"].min())
 
