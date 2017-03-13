@@ -40,12 +40,6 @@ if __name__ == "__main__":
 	## Tokenization ##
 
 	clean_tokenized = [hl.split(" ") for hl in clean_headlines]
-
-	#clear some memory for large bag of words array
-	tokenized_headlines = None
-	tokenCmb = None
-	tokens = None
-	tokenCounts = None
 	
 	## Bag of words model ##
 
